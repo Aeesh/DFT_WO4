@@ -1,0 +1,36 @@
+# Temporary calculation files
+tmp/
+*.save/
+*.xml
+
+# Wavefunction files (huge binary files)
+wfc*.dat
+*.wfc*
+*.igk*
+
+# Other large binary/temporary files
+charge-density.dat
+data-file-schema.xml
+occup.txt
+
+# Pseudopotentials -
+pseudo_dojo_pbesol/
+*.upf
+*.UPF
+
+# Log files
+logs/
+*.log
+*.err
+
+# System files
+.DS_Store
+__MACOSX/
+*~
+*.swp
+*.swo
+
+# Compressed archives
+*.tar
+*.tar.gz
+*.zip
