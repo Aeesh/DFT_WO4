@@ -24,6 +24,6 @@ module load intel-oneapi-mpi/2021.6.0
 QE_BIN=/trace/group/dabo/shared/software/qe/qe-7.4.1/build/bin/pw.x
 
 # Run SCF calculation
-mpirun -np $SLURM_NTASKS $QE_BIN -in inputs/scf.MnNiWO4.in > outputs/scf.MnNiWO4.out
+mpirun -np $SLURM_NTASKS $QE_BIN -in binary_inputs/scf.MnNiWO4.in > outputs/scf.MnNiWO4.out
 
 echo "Finished MnNiWO4 SCF at $(date)"

@@ -1,11 +1,10 @@
-
 &CONTROL
 calculation = 'scf'
-prefix = 'NiWO4'
+prefix = 'NiZnWO4_AFM'
 verbosity = 'high'
 restart_mode = 'from_scratch'
-outdir = './tmp/NiWO4/'
-pseudo_dir = 'pseudo_dojo_pbesol/'
+outdir = './tmp/NiZnWO4_AFM/'
+pseudo_dir = '../../../pseudo_pbe/'
 etot_conv_thr = 1e-6
 forc_conv_thr = 1e-5
 /
@@ -14,55 +13,53 @@ forc_conv_thr = 1e-5
 ibrav = 0
 nat = 12
 ntyp = 4
-ecutwfc = 100
-ecutrho = 400
+ecutwfc = 120
+ecutrho = 480
 occupations = 'smearing'
 smearing = 'mv'
 degauss = 0.02
 nspin = 2
-starting_magnetization(1) = 0.2
-starting_magnetization(2) = -0.2
-starting_magnetization(3) = 0.0
-starting_magnetization(4) = 0.0
-
+starting_magnetization(1) = 0.20   ! Ni - spin up
+starting_magnetization(2) = 0.00   ! Zn - non-magnetic (d10)
+starting_magnetization(3) = 0.00   ! W
+starting_magnetization(4) = 0.00   ! O
 /
 
 &ELECTRONS
 electron_maxstep = 150
 mixing_beta = 0.7
 mixing_mode = 'local-TF'
-conv_thr = 1.0e-8
+conv_thr = 1.0e-9
 diagonalization = 'david'
 /
 
 ATOMIC_SPECIES
-Ni1     58.6934 Ni.upf
-Ni2     58.6934 Ni.upf
-W      183.84 W.upf
-O      15.9994 O.upf
+Ni  58.6934    Ni.upf
+Zn  65.390     Zn.upf
+W   183.84     W.upf
+O   15.9994    O.upf
 
-ATOMIC_POSITIONS {crystal}
-Ni1               0.5000000000        0.6484029234        0.2500000000
-Ni2               0.5000000000        0.3515970766        0.7500000000
-W               -0.0000000000        0.8276182087        0.7500000000
-W               -0.0000000000        0.1723817913        0.2500000000
-O                0.7342991516        0.6195282565        0.9100319265
-O                0.2657008484        0.6195282565        0.5899680735
-O                0.2657008484        0.3804717435        0.0899680735
-O                0.7342991516        0.3804717435        0.4100319265
-O                0.7709859055        0.1138959610        0.9241957589
-O                0.2290140945        0.1138959610        0.5758042411
-O                0.7709859055        0.8861040390        0.4241957589
-O                0.2290140945        0.8861040390        0.0758042411
+ATOMIC_POSITIONS crystal
+Ni           0.5000000000        0.6484029234        0.2500000000
+Zn           0.5000000000        0.3515970766        0.7500000000
+W           -0.0000000000        0.8276182087        0.7500000000
+W           -0.0000000000        0.1723817913        0.2500000000
+O            0.7342991516        0.6195282565        0.9100319265
+O            0.2657008484        0.6195282565        0.5899680735
+O            0.2657008484        0.3804717435        0.0899680735
+O            0.7342991516        0.3804717435        0.4100319265
+O            0.7709859055        0.1138959610        0.9241957589
+O            0.2290140945        0.1138959610        0.5758042411
+O            0.7709859055        0.8861040390        0.4241957589
+O            0.2290140945        0.8861040390        0.0758042411
 
-K_POINTS {automatic}
-4 4 4 1 1 1
+K_POINTS automatic
+6 6 6 1 1 1
 
 CELL_PARAMETERS angstrom
-   4.475269795   0.000000000   0.018562646
-   0.000000000   5.541023409   0.000000000
-   0.015812017   0.000000000   4.881382161
+   4.5671941508   0.0000000000   0.0101732530
+   0.0000000000   5.6258622380   0.0000000000
+  -0.0164338935   0.0000000000   4.8908132630
 
 HUBBARD {ortho-atomic}
-U Ni1-3d 8.55
-U Ni2-3d 8.55
+U Ni-3d 8.55
