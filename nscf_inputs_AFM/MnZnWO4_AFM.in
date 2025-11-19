@@ -1,5 +1,5 @@
 &CONTROL
-calculation = 'scf'
+calculation = 'nscf'
 prefix = 'MnZnWO4_AFM'
 verbosity = 'high'
 restart_mode = 'from_scratch'
@@ -23,6 +23,7 @@ starting_magnetization(1) = 0.20   ! Mn - spin up
 starting_magnetization(2) = 0.00   ! Zn - non-magnetic (d10)
 starting_magnetization(3) = 0.00   ! W
 starting_magnetization(4) = 0.00   ! O
+nbnd = 80
 /
 
 &ELECTRONS
@@ -54,7 +55,7 @@ O            0.7870376800       0.1049909600       0.0606510900
 O            0.2129623200       0.1049909600       0.4393489100
 
 K_POINTS automatic
-6 6 6 1 1 1
+12 12 12 1 1 1
 
 CELL_PARAMETERS angstrom
    4.7208365610   0.0000000000   0.0008921790
