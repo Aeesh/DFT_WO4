@@ -4,7 +4,7 @@ prefix = 'MnZnWO4_AFM'
 verbosity = 'high'
 restart_mode = 'from_scratch'
 outdir = './tmp/MnZnWO4_AFM/'
-pseudo_dir = '../../../pseudo_pbe/'
+pseudo_dir = 'pseudo_dojo_pbesol/'
 etot_conv_thr = 1e-6
 forc_conv_thr = 1e-5
 /
