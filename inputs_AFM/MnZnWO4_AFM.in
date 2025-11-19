@@ -1,9 +1,9 @@
 &CONTROL
 calculation = 'scf'
-prefix = 'MnFeWO4_AFM'
+prefix = 'MnZnWO4_AFM'
 verbosity = 'high'
 restart_mode = 'from_scratch'
-outdir = './tmp/MnFeWO4_AFM/'
+outdir = './tmp/MnZnWO4_AFM/'
 pseudo_dir = '../../../pseudo_pbe/'
 etot_conv_thr = 1e-6
 forc_conv_thr = 1e-5
@@ -20,7 +20,7 @@ smearing = 'mv'
 degauss = 0.02
 nspin = 2
 starting_magnetization(1) = 0.20   ! Mn - spin up
-starting_magnetization(2) = -0.20  ! Fe - spin down (AFM)
+starting_magnetization(2) = 0.00   ! Zn - non-magnetic (d10)
 starting_magnetization(3) = 0.00   ! W
 starting_magnetization(4) = 0.00   ! O
 /
@@ -35,13 +35,13 @@ diagonalization = 'david'
 
 ATOMIC_SPECIES
 Mn  54.938045  Mn.upf
-Fe  55.845     Fe.upf
+Zn  65.390     Zn.upf
 W   183.84     W.upf
 O   15.9994    O.upf
 
 ATOMIC_POSITIONS crystal
 Mn           0.5000000000       0.6775034300       0.7500000000
-Fe           0.5000000000       0.3224965700       0.2500000000
+Zn           0.5000000000       0.3224965700       0.2500000000
 W            0.0000000000       0.1787338000       0.7500000000
 W            0.0000000000       0.8212662000       0.2500000000
 O            0.2548931300       0.3748717400       0.8971196000
@@ -57,10 +57,9 @@ K_POINTS automatic
 6 6 6 1 1 1
 
 CELL_PARAMETERS angstrom
-   4.5689412812   0.0000000000   0.0009568715
-   0.0000000000   5.6122733897   0.0000000000
-  -0.0525858794   0.0000000000   4.9368302630
+   4.7208365610   0.0000000000   0.0008921790
+   0.0000000000   5.7307794434   0.0000000000
+  -0.0710864825   0.0000000000   4.9505609591
 
 HUBBARD {ortho-atomic}
 U Mn-3d 4.65
-U Fe-3d 7.08
