@@ -1,0 +1,66 @@
+&CONTROL
+calculation = 'scf'
+prefix = 'NiFeWO4_FM'
+verbosity = 'high'
+restart_mode = 'from_scratch'
+outdir = './tmp/NiFeWO4_FM/'
+pseudo_dir = 'pseudo_dojo_pbesol/'
+etot_conv_thr = 1e-6
+forc_conv_thr = 1e-5
+/
+
+&SYSTEM
+ibrav = 0
+nat = 12
+ntyp = 4
+ecutwfc = 120
+ecutrho = 480
+occupations = 'smearing'
+smearing = 'mv'
+degauss = 0.02
+nspin = 2
+starting_magnetization(1) = 0.20   ! Ni - spin up
+starting_magnetization(2) = 0.20   ! Fe - spin up (FM)
+starting_magnetization(3) = 0.00   ! W
+starting_magnetization(4) = 0.00   ! O
+/
+
+&ELECTRONS
+electron_maxstep = 150
+mixing_beta = 0.7
+mixing_mode = 'local-TF'
+conv_thr = 1.0e-9
+diagonalization = 'david'
+/
+
+ATOMIC_SPECIES
+Ni  58.6934    Ni.upf
+Fe  55.845     Fe.upf
+W   183.84     W.upf
+O   15.9994    O.upf
+
+ATOMIC_POSITIONS crystal
+Ni           0.5000000000        0.6484029234        0.2500000000
+Fe           0.5000000000        0.3515970766        0.7500000000
+W           -0.0000000000        0.8276182087        0.7500000000
+W           -0.0000000000        0.1723817913        0.2500000000
+O            0.7342991516        0.6195282565        0.9100319265
+O            0.2657008484        0.6195282565        0.5899680735
+O            0.2657008484        0.3804717435        0.0899680735
+O            0.7342991516        0.3804717435        0.4100319265
+O            0.7709859055        0.1138959610        0.9241957589
+O            0.2290140945        0.1138959610        0.5758042411
+O            0.7709859055        0.8861040390        0.4241957589
+O            0.2290140945        0.8861040390        0.0758042411
+
+K_POINTS automatic
+6 6 6 1 1 1
+
+CELL_PARAMETERS angstrom
+   4.4152241287   0.0000000000   0.0102694705
+   0.0000000000   5.5072815015   0.0000000000
+   0.0024630075   0.0000000000   4.8770055685
+
+HUBBARD {ortho-atomic}
+U Ni-3d 8.55
+U Fe-3d 7.08
