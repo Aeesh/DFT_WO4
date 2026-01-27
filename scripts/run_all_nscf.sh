@@ -1,15 +1,13 @@
 #!/bin/bash
-# submit_all_scf.sh
-# This script submits each .in file in inputs_FM and inputs_AFM as a separate SLURM job
+# run_all_nscf.sh
+# Submit each .in file in nscf_inputs_FM and nscf_inputs_AFM as a separate SLURM job
 
-INPUT_DIRS=("inputs_FM" "inputs_AFM")
-OUTPUT_DIR="outputs"
-LOG_DIR="logs"
+INPUT_DIRS=("nscf_inputs_FM" "nscf_inputs_AFM")
+OUTPUT_DIR="nscf_outputs"
+LOG_DIR="nscf_logs"
 
 mkdir -p $OUTPUT_DIR
 mkdir -p $LOG_DIR
-mkdir -p tmp
-
 
 for DIR in "${INPUT_DIRS[@]}"; do
     for INFILE in $DIR/*.in; do
@@ -17,14 +15,14 @@ for DIR in "${INPUT_DIRS[@]}"; do
 
         echo "===== Starting submission for $BASENAME at $(date) ====="
 
-        # Create a temporary SLURM job script for this input
+        # Create temporary SLURM job script for this input
         JOBSCRIPT="$LOG_DIR/job_$BASENAME.sh"
         cat > $JOBSCRIPT << EOF
 #!/bin/bash
 #SBATCH --job-name=$BASENAME
 #SBATCH --partition=cpuonly
 #SBATCH --nodes=1
-#SBATCH --ntasks-per-node=24
+#SBATCH --ntasks-per-node=16
 #SBATCH --mem=16G
 #SBATCH --time=01:00:00
 #SBATCH --output=$LOG_DIR/${BASENAME}.out
@@ -40,11 +38,7 @@ module load intel-oneapi-mpi/2021.6.0
 
 QE_BIN=/trace/group/dabo/shared/software/qe/qe-7.4.1/build/bin/pw.x
 
-# Create unique temp folder for this job
-mkdir -p tmp/$BASENAME
-
-mpirun -np \$SLURM_NTASKS \$QE_BIN -in $INFILE -outdir ./tmp/$BASENAME > $OUTPUT_DIR/scf.$BASENAME.out
-
+mpirun -np \$SLURM_NTASKS \$QE_BIN -in $INFILE > $OUTPUT_DIR/nscf.$BASENAME.out
 EOF
 
         # Submit the job
