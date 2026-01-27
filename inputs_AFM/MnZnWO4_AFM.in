@@ -34,6 +34,11 @@ conv_thr = 1.0e-9
 diagonalization = 'david'
 /
 
+&IONS
+  ion_dynamics = 'bfgs'
+/
+
+
 ATOMIC_SPECIES
 Mn  54.938045  Mn.upf
 Zn  65.390     Zn.upf
