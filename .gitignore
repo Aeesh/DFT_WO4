@@ -34,3 +34,5 @@ __MACOSX/
 *.tar
 *.tar.gz
 *.zip
+outputs/
+outputs/
