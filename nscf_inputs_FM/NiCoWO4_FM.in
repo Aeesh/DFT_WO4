@@ -2,6 +2,7 @@
 calculation = 'nscf'
 prefix = 'NiCoWO4_FM'
 verbosity = 'high'
+disk_io = 'nowf'
 restart_mode = 'from_scratch'
 outdir = './tmp/NiCoWO4_FM/'
 pseudo_dir = 'pseudo_dojo_pbesol/'

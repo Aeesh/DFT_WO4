@@ -3,6 +3,7 @@
 calculation = 'scf'
 prefix = 'NiWO4'
 verbosity = 'high'
+disk_io = 'nowf'
 restart_mode = 'from_scratch'
 outdir = './tmp/NiWO4/'
 pseudo_dir = 'pseudo_dojo_pbesol/'

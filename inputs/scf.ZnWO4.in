@@ -3,6 +3,7 @@
 calculation = 'scf'
 prefix = 'ZnWO4'
 verbosity = 'high'
+disk_io = 'nowf'
 restart_mode = 'from_scratch'
 outdir = './tmp/ZnWO4/'
 pseudo_dir = 'pseudo_dojo_pbesol/'
@@ -21,8 +22,8 @@ occupations = 'smearing'
 smearing = 'mv'
 degauss = 0.02
 starting_magnetization(1) = 0.20
-starting_magnetization(2) = -0.20 
-starting_magnetization(3) = 0.00 
+starting_magnetization(2) = -0.20
+starting_magnetization(3) = 0.00
 starting_magnetization(4) = 0.00
 /
 

@@ -2,6 +2,7 @@
 calculation = 'scf'
 prefix = 'MnNiWO4_AFM'
 verbosity = 'high'
+disk_io = 'nowf'
 restart_mode = 'from_scratch'
 outdir = './tmp/MnNiWO4_AFM/'
 pseudo_dir = 'pseudo_dojo_pbesol/'
