@@ -1,5 +1,5 @@
 &CONTROL
-calculation = 'relax'
+calculation = 'scf'
 prefix = 'MnZnWO4_FM'
 verbosity = 'high'
 disk_io = 'nowf'
