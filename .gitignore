@@ -35,4 +35,7 @@ __MACOSX/
 *.tar.gz
 *.zip
 outputs/
-outputs/
+
+relax_outputs/
+relax_tmp/
+relax_logs/
