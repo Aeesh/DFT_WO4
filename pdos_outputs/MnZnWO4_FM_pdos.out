@@ -1,0 +1,63 @@
+
+     Program PROJWFC v.7.4.1 starts on  6Feb2026 at  6:59:29 
+        Git branch: heads/qe-7.4.1
+        Last git commit: 500de340b820e1cb8c05f2d8bb8fced102f377c1-dirty
+        Last git commit date: Fri Feb 7 14:59:05 2025 +0000
+        Last git commit subject: Merge branch 'qe-7.4.1' into 'master'
+
+     This program is part of the open-source Quantum ESPRESSO suite
+     for quantum simulation of materials; please cite
+         "P. Giannozzi et al., J. Phys.:Condens. Matter 21 395502 (2009);
+         "P. Giannozzi et al., J. Phys.:Condens. Matter 29 465901 (2017);
+         "P. Giannozzi et al., J. Chem. Phys. 152 154105 (2020);
+          URL http://www.quantum-espresso.org", 
+     in publications or presentations arising from this work. More details at
+     http://www.quantum-espresso.org/quote
+
+     Parallel version (MPI), running on     1 processors
+
+     MPI processes distributed on     1 nodes
+     199118 MiB available memory on the printing compute node when the environment starts
+ 
+
+     Reading xml data from directory:
+
+     ./tmp/MnZnWO4_FM/MnZnWO4_FM.save/
+
+     IMPORTANT: XC functional enforced from input :
+     Exchange-correlation= PBESOL
+                           (   1   4  10   8   0   0   0)
+     Any further DFT definition will be discarded
+     Please, verify this is what you really want
+
+ 
+     G-vector sticks info
+     --------------------
+     sticks:   dense  smooth     PW     G-vecs:    dense   smooth      PW
+     Sum        3685    3685   1011               160519   160519   23053
+ 
+     Using Slab Decomposition
+ 
+
+     Gaussian broadening (default values): ngauss,degauss=   0    0.000735
+
+
+     Calling projwave .... 
+     Subspace diagonalization in iterative solution of the eigenvalue problem:
+     a serial algorithm will be used
+
+ 
+  Problem Sizes 
+  natomwfc =           72
+  nbnd     =           80
+  nkstot   =          864
+  npwx     =        20106
+  nkb      =          204
+ 
+
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+     Error in routine read_wfc (29):
+     cannot open restart file ./tmp/MnZnWO4_FM/MnZnWO4_FM.save/wfcup1 for reading
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+     stopping ...

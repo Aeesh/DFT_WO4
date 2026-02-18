@@ -1,0 +1,53 @@
+MPI startup(): PMI server not found. Please set I_MPI_PMI_LIBRARY variable if it is not a singleton case.
+
+     Program DOS v.7.4.1 starts on  6Feb2026 at  6:56:24 
+        Git branch: heads/qe-7.4.1
+        Last git commit: 500de340b820e1cb8c05f2d8bb8fced102f377c1-dirty
+        Last git commit date: Fri Feb 7 14:59:05 2025 +0000
+        Last git commit subject: Merge branch 'qe-7.4.1' into 'master'
+
+     This program is part of the open-source Quantum ESPRESSO suite
+     for quantum simulation of materials; please cite
+         "P. Giannozzi et al., J. Phys.:Condens. Matter 21 395502 (2009);
+         "P. Giannozzi et al., J. Phys.:Condens. Matter 29 465901 (2017);
+         "P. Giannozzi et al., J. Chem. Phys. 152 154105 (2020);
+          URL http://www.quantum-espresso.org", 
+     in publications or presentations arising from this work. More details at
+     http://www.quantum-espresso.org/quote
+
+     Parallel version (MPI), running on     1 processors
+
+     MPI processes distributed on     1 nodes
+     199550 MiB available memory on the printing compute node when the environment starts
+ 
+
+     Reading xml data from directory:
+
+     ./tmp/MnNiWO4_FM/MnNiWO4_FM.save/
+
+     IMPORTANT: XC functional enforced from input :
+     Exchange-correlation= PBESOL
+                           (   1   4  10   8   0   0   0)
+     Any further DFT definition will be discarded
+     Please, verify this is what you really want
+
+ 
+     G-vector sticks info
+     --------------------
+     sticks:   dense  smooth     PW     G-vecs:    dense   smooth      PW
+     Sum        3571    3571    977               154841   154841   22265
+ 
+     Using Slab Decomposition
+ 
+
+     Gaussian broadening (default values): ngauss,degauss=   0    0.000735
+
+ 
+     DOS          :      3.43s CPU      3.62s WALL
+
+ 
+   This run was terminated on:   6:56:28   6Feb2026            
+
+=------------------------------------------------------------------------------=
+   JOB DONE.
+=------------------------------------------------------------------------------=

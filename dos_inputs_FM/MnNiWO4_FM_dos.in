@@ -1,0 +1,8 @@
+&DOS
+prefix = 'MnNiWO4_FM'
+outdir = './tmp/MnNiWO4_FM/'
+fildos = 'MnNiWO4_FM.dos'
+emin = -20.0
+emax = 30.0
+deltae = 0.01
+/

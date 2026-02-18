@@ -8,6 +8,7 @@ LOG_DIR="nscf_logs"
 
 mkdir -p $OUTPUT_DIR
 mkdir -p $LOG_DIR
+mkdir -p tmp
 
 for DIR in "${INPUT_DIRS[@]}"; do
     for INFILE in $DIR/*.in; do
@@ -22,7 +23,7 @@ for DIR in "${INPUT_DIRS[@]}"; do
 #SBATCH --job-name=$BASENAME
 #SBATCH --partition=cpuonly
 #SBATCH --nodes=1
-#SBATCH --ntasks-per-node=16
+#SBATCH --ntasks-per-node=24
 #SBATCH --mem=16G
 #SBATCH --time=01:00:00
 #SBATCH --output=$LOG_DIR/${BASENAME}.out
@@ -38,7 +39,11 @@ module load intel-oneapi-mpi/2021.6.0
 
 QE_BIN=/trace/group/dabo/shared/software/qe/qe-7.4.1/build/bin/pw.x
 
-mpirun -np \$SLURM_NTASKS \$QE_BIN -in $INFILE > $OUTPUT_DIR/nscf.$BASENAME.out
+# Create unique temp folder for this job
+mkdir -p tmp/$BASENAME
+
+mpirun -np \$SLURM_NTASKS \$QE_BIN -in $INFILE -outdir ./tmp/$BASENAME > $OUTPUT_DIR/nscf.$BASENAME.out
+
 EOF
 
         # Submit the job

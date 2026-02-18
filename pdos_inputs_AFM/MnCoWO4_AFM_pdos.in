@@ -1,0 +1,8 @@
+&PROJWFC
+prefix = 'MnCoWO4_AFM'
+outdir = './tmp/MnCoWO4_AFM/'
+filpdos = 'MnCoWO4_AFM'
+emin = -20.0
+emax = 30.0
+deltae = 0.01
+/
