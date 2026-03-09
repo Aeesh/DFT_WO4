@@ -1,0 +1,10 @@
+- randomise the starting magnetisation b/w -1 and 1, to see the effect or chang eof band gap..
+- 2 fm with same value, 2 afm with same value, +ve slightly higher than -ve
+
+
+FiM => when one is larger than the ohter one..
+AFiM => when one is lage than the othe rbut opposite...
+
+PM => when there's 0 and 0
+
+use PM relax output for all other phases...
