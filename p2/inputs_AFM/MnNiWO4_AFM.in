@@ -1,0 +1,68 @@
+&CONTROL
+calculation = 'scf'
+prefix = 'MnNiWO4_AFM'
+verbosity = 'high'
+disk_io = 'nowf'
+restart_mode = 'from_scratch'
+outdir = './tmp/MnNiWO4_AFM/'
+pseudo_dir = 'pseudo_dojo_pbesol/'
+etot_conv_thr = 1e-6
+forc_conv_thr = 1e-5
+/
+
+&SYSTEM
+ibrav = 0
+nat = 12
+ntyp = 4
+ecutwfc = 120
+ecutrho = 480
+occupations = 'smearing'
+smearing = 'mv'
+degauss = 0.02
+nspin = 2
+starting_magnetization(1) = 0.20   ! Mn - spin up
+starting_magnetization(2) = -0.20  ! Ni - spin down (AFM)
+starting_magnetization(3) = 0.00   ! W
+starting_magnetization(4) = 0.00   ! O
+/
+
+&ELECTRONS
+electron_maxstep = 150
+mixing_beta = 0.7
+mixing_mode = 'local-TF'
+conv_thr = 1.0e-9
+diagonalization = 'david'
+/
+
+
+ATOMIC_SPECIES
+Mn  54.938045  Mn.upf
+Ni  58.6934    Ni.upf
+W   183.84     W.upf
+O   15.9994    O.upf
+
+ATOMIC_POSITIONS crystal
+Mn               0.5000000000        0.6723630062        0.7500000000
+Ni               0.5000000000        0.3360282070        0.2500000000
+W                0.0000000000        0.1795845056        0.7500000000
+W                0.0000000000        0.8229555241        0.2500000000
+O                0.2558969469        0.3739261890        0.9063521249
+O                0.7441030531        0.3739261890        0.5936478751
+O                0.7453188053        0.6178948029        0.1076480943
+O                0.2546811947        0.6178948029        0.3923519057
+O                0.2126941318        0.8973782440        0.9361733634
+O                0.7873058682        0.8973782440        0.5638266366
+O                0.7765551870        0.1053351426        0.0635245092
+O                0.2234448130        0.1053351426        0.4364754908
+
+K_POINTS automatic
+6 6 6 1 1 1
+
+CELL_PARAMETERS angstrom
+   4.6287441398   0.0000000000   0.0084495082
+   0.0000000000   5.6461489805   0.0000000000
+  -0.0390476794   0.0000000000   4.9409183975
+
+HUBBARD {ortho-atomic}
+U Mn-3d 4.65
+U Ni-3d 8.55

@@ -1,0 +1,63 @@
+
+&CONTROL
+calculation = 'scf'
+prefix = 'ZnWO4'
+verbosity = 'high'
+disk_io = 'nowf'
+restart_mode = 'from_scratch'
+outdir = './tmp/ZnWO4/'
+pseudo_dir = 'pseudo_dojo_pbesol/'
+etot_conv_thr = 1e-6
+forc_conv_thr = 1e-5
+/
+
+&SYSTEM
+ibrav = 0
+nat = 12
+ntyp = 4
+ecutwfc = 100
+ecutrho = 400
+nspin = 2
+occupations = 'smearing'
+smearing = 'mv'
+degauss = 0.02
+starting_magnetization(1) = 0.20
+starting_magnetization(2) = -0.20
+starting_magnetization(3) = 0.00
+starting_magnetization(4) = 0.00
+/
+
+&ELECTRONS
+electron_maxstep = 150
+mixing_beta = 0.7
+mixing_mode = 'local-TF'
+conv_thr = 1.0e-8
+diagonalization = 'david'
+/
+
+ATOMIC_SPECIES
+Zn1 65.390 Zn.upf
+Zn2 65.390 Zn.upf
+W   183.84 W.upf
+O  15.999 O.upf
+
+ATOMIC_POSITIONS {crystal}
+Zn1               0.5000000000        0.3220009563        0.2500000000
+Zn2               0.5000000000        0.6779990437        0.7500000000
+W               -0.0000000000        0.8184401298        0.2500000000
+W               -0.0000000000        0.1815598702        0.7500000000
+O                0.2168735305        0.8942511647        0.9345751077
+O                0.7831264695        0.8942511647        0.5654248923
+O                0.7831264695        0.1057488353        0.0654248923
+O                0.2168735305        0.1057488353        0.4345751077
+O                0.2575222288        0.6240139475        0.4029156442
+O                0.7424777712        0.6240139475        0.0970843558
+O                0.7424777712        0.3759860525        0.5970843558
+O                0.2575222288        0.3759860525        0.9029156442
+
+K_POINTS automatic
+4 4 4 1 1 1
+CELL_PARAMETERS angstrom
+   4.659118220   0.000000000   0.001784758
+   0.000000000   5.710610667   0.000000000
+  -0.048420063   0.000000000   4.900244099

@@ -1,0 +1,67 @@
+&CONTROL
+  calculation = 'bands'
+  prefix = 'MnCoWO4_AFM'
+  outdir = './tmp/MnCoWO4_AFM/'
+  pseudo_dir = 'pseudo_dojo_pbesol/'
+  verbosity = 'high'
+/
+
+&SYSTEM
+  ibrav = 0
+  nat = 12
+  ntyp = 4
+  ecutwfc = 120
+  ecutrho = 480
+  occupations = 'fixed'
+  nspin = 2
+  starting_magnetization(1) = 0.2   ! Mn
+  starting_magnetization(2) = -0.2   ! Co
+  starting_magnetization(3) = 0.00   ! W
+  starting_magnetization(4) = 0.00   ! O
+  nbnd = 80
+/
+
+&ELECTRONS
+  electron_maxstep = 150
+  mixing_beta = 0.7
+  conv_thr = 1.0e-9
+  diagonalization = 'david'
+/
+
+ATOMIC_SPECIES
+Mn  54.938045  Mn.upf
+Co  58.933195  Co.upf
+W   183.84     W.upf
+O   15.9994    O.upf
+
+ATOMIC_POSITIONS crystal
+Mn               0.5000000000        0.6743275096        0.7500000000
+Co               0.5000000000        0.3325073497        0.2500000000
+W               -0.0000000000        0.1788223565        0.7500000000
+W               -0.0000000000        0.8226242808        0.2500000000
+O                0.2558509934        0.3776425683        0.9030192010
+O                0.7441490066        0.3776425683        0.5969807990
+O                0.7446935586        0.6170567894        0.1042207557
+O                0.2553064414        0.6170567894        0.3957792443
+O                0.2166186853        0.8981522109        0.9390156060
+O                0.7833813147        0.8981522109        0.5609843940
+O                0.7760198412        0.1030076831        0.0614525323
+O                0.2239801588        0.1030076831        0.4385474677
+
+K_POINTS crystal_b
+6
+  0.0000  0.0000  0.0000   20   ! Gamma
+  0.0000  0.5000  0.0000   20   ! Y
+  0.5000  0.5000  0.0000   20   ! M
+  0.0000  0.0000  0.0000   20   ! Gamma
+  0.0000  0.0000  0.5000   20   ! Z
+  0.5000  0.5000  0.5000    1   ! A
+
+CELL_PARAMETERS angstrom
+4.5886900051   0.0000000000  -0.0112230753
+0.0000000000   5.6083227763   0.0000000000
+-0.0600591093   0.0000000000   4.9344688436
+
+HUBBARD {ortho-atomic}
+U Mn-3d 4.65
+U Co-3d 7.84

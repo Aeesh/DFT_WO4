@@ -1,0 +1,5 @@
+&BANDS
+    prefix = 'A6WO4'
+    outdir = './tmp/'
+    filband = 'bands_down.A6WO4.dat'
+/

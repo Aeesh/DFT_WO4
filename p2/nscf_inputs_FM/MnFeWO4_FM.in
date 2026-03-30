@@ -1,0 +1,64 @@
+&CONTROL
+calculation = 'nscf'
+prefix = 'MnFeWO4_FM'
+verbosity = 'high'
+disk_io = 'nowf'
+restart_mode = 'from_scratch'
+outdir = './tmp/MnFeWO4_FM/'
+pseudo_dir = 'pseudo_dojo_pbesol/'
+etot_conv_thr = 1e-6
+forc_conv_thr = 1e-5
+/
+
+&SYSTEM
+ibrav = 0
+nat = 12
+ntyp = 4
+ecutwfc = 120
+ecutrho = 480
+occupations = 'fixed'
+nspin = 2
+starting_magnetization(1) = 0.20   ! Mn - spin up
+starting_magnetization(2) = 0.20   ! Fe - spin up (FM)
+starting_magnetization(3) = 0.00   ! W
+starting_magnetization(4) = 0.00   ! O
+nbnd = 80
+/
+
+&ELECTRONS
+conv_thr = 1.0e-9
+diagonalization = 'david'
+diago_full_acc = .true.
+/
+
+ATOMIC_SPECIES
+Mn  54.938045  Mn.upf
+Fe  55.845     Fe.upf
+W   183.84     W.upf
+O   15.9994    O.upf
+
+ATOMIC_POSITIONS crystal
+Mn               0.5000000000        0.6759789204        0.7500000000
+Fe               0.5000000000        0.3244067923        0.2500000000
+W                0.0000000000        0.1802574551        0.7500000000
+W                0.0000000000        0.8209168093        0.2500000000
+O                0.2520319111        0.3823187406        0.9014224876
+O                0.7479680889        0.3823187406        0.5985775124
+O                0.7443783673        0.6167671720        0.1040507672
+O                0.2556216327        0.6167671720        0.3959492328
+O                0.2204724264        0.9010066216        0.9417649669
+O                0.7795275736        0.9010066216        0.5582350331
+O                0.7759517948        0.0991274773        0.0585598080
+O                0.2240482052        0.0991274773        0.4414401920
+
+K_POINTS automatic
+12 12 12 1 1 1
+
+CELL_PARAMETERS angstrom
+   4.5689412812   0.0000000000   0.0009568715
+   0.0000000000   5.6122733897   0.0000000000
+  -0.0525858794   0.0000000000   4.9368302630
+
+HUBBARD {ortho-atomic}
+U Mn-3d 4.65
+U Fe-3d 7.08

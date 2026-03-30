@@ -1,0 +1,34 @@
+
+     Program PROJWFC v.7.4.1 starts on 26Mar2026 at  9:11: 1 
+        Git branch: heads/qe-7.4.1
+        Last git commit: 500de340b820e1cb8c05f2d8bb8fced102f377c1-dirty
+        Last git commit date: Fri Feb 7 14:59:05 2025 +0000
+        Last git commit subject: Merge branch 'qe-7.4.1' into 'master'
+
+     This program is part of the open-source Quantum ESPRESSO suite
+     for quantum simulation of materials; please cite
+         "P. Giannozzi et al., J. Phys.:Condens. Matter 21 395502 (2009);
+         "P. Giannozzi et al., J. Phys.:Condens. Matter 29 465901 (2017);
+         "P. Giannozzi et al., J. Chem. Phys. 152 154105 (2020);
+          URL http://www.quantum-espresso.org", 
+     in publications or presentations arising from this work. More details at
+     http://www.quantum-espresso.org/quote
+
+     Parallel version (MPI), running on     1 processors
+
+     MPI processes distributed on     1 nodes
+     764864 MiB available memory on the printing compute node when the environment starts
+ 
+
+     Reading xml data from directory:
+
+     ./tmp/MnFeWO4_AFM/MnFeWO4_AFM.save/
+     Message from routine qexsd_readschema :
+     xml data file ./tmp/MnFeWO4_AFM/MnFeWO4_AFM.save/data-file-schema.xml not found
+
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+     Error in routine read_xml_file (1):
+     fatal error reading xml file
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+     stopping ...

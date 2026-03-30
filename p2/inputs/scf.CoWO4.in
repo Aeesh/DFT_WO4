@@ -1,0 +1,65 @@
+
+&CONTROL
+calculation = 'scf'
+prefix = 'CoWO4'
+verbosity = 'high'
+disk_io = 'nowf'
+restart_mode = 'from_scratch'
+outdir = './tmp/CoWO4'
+pseudo_dir = 'pseudo_dojo_pbesol/'
+etot_conv_thr = 1e-6
+forc_conv_thr = 1e-5
+/
+
+&SYSTEM
+ibrav = 0
+nat = 12
+ntyp = 3
+ecutwfc = 120
+ecutrho = 480
+occupations = 'smearing'
+smearing = 'mv'
+degauss = 0.02
+nspin = 2
+starting_magnetization(1) = 0.20
+starting_magnetization(2) = 0.00
+starting_magnetization(3) = 0.00
+/
+
+&ELECTRONS
+electron_maxstep = 150
+mixing_beta = 0.7
+mixing_mode = 'local-TF'
+conv_thr = 1.0e-9
+diagonalization = 'david'
+/
+
+ATOMIC_SPECIES
+Co1 58.933195 Co1.upf
+W      183.84 W.upf
+O      15.9994 O.upf
+
+ATOMIC_POSITIONS {crystal}
+Co1               0.5000000000        0.6380475314        0.2500000000
+Co1               0.5000000000        0.3619524686        0.7500000000
+W               -0.0000000000        0.1643582394        0.2500000000
+W               -0.0000000000        0.8356417606        0.7500000000
+O                0.2356768516        0.1213304508        0.9186353476
+O                0.7643231484        0.1213304508        0.5813646524
+O                0.7643231484        0.8786695492        0.0813646524
+O                0.2356768516        0.8786695492        0.4186353476
+O                0.2706583371        0.3808004017        0.4156372185
+O                0.7293416629        0.3808004017        0.0843627815
+O                0.7293416629        0.6191995983        0.5843627815
+O                0.2706583371        0.6191995983        0.9156372185
+
+K_POINTS {automatic}
+6 6 6 1 1 1
+
+CELL_PARAMETERS angstrom
+   4.395187102   0.000000000  -0.026232248
+   0.000000000   5.465728326   0.000000000
+  -0.027524052   0.000000000   4.868891789
+
+HUBBARD {ortho-atomic}
+U Co1-3d 7.84

@@ -1,0 +1,65 @@
+
+&CONTROL
+calculation = 'scf'
+prefix = 'FeWO4'
+verbosity = 'high'
+disk_io = 'nowf'
+restart_mode = 'from_scratch'
+outdir = './tmp/FeWO4/'
+pseudo_dir = 'pseudo_dojo_pbesol/'
+etot_conv_thr = 1e-6
+forc_conv_thr = 1e-5
+/
+
+&SYSTEM
+ibrav = 0
+nat = 12
+ntyp = 3
+ecutwfc = 120
+ecutrho = 480
+occupations = 'smearing'
+smearing = 'mv'
+degauss = 0.02
+nspin = 2
+starting_magnetization(1) = 0.20
+starting_magnetization(2) = 0.00
+starting_magnetization(3) = 0.00
+/
+
+&ELECTRONS
+electron_maxstep = 150
+mixing_beta = 0.7
+mixing_mode = 'local-TF'
+conv_thr = 1.0e-8
+diagonalization = 'david'
+/
+
+ATOMIC_SPECIES
+Fe1     55.845 Fe.upf
+W      183.84 W.upf
+O      15.9994 O.upf
+
+ATOMIC_POSITIONS {crystal}
+Fe1               0.5000000000        0.6352890913        0.2500000000
+Fe1               0.5000000000        0.3647109087        0.7500000000
+W                0.0000000000        0.1630757560        0.2500000000
+W               -0.0000000000        0.8369242440        0.7500000000
+O                0.2381576118        0.1233063854        0.5855182088
+O                0.7618423882        0.1233063854        0.9144817912
+O                0.7618423882        0.8766936146        0.4144817912
+O                0.2381576118        0.8766936146        0.0855182088
+O                0.2698368242        0.3809510007        0.0802662872
+O                0.7301631758        0.3809510007        0.4197337128
+O                0.7301631758        0.6190489993        0.9197337128
+O                0.2698368242        0.6190489993        0.5802662872
+
+K_POINTS {automatic}
+6 6 6 1 1 1
+
+CELL_PARAMETERS angstrom
+   4.355212624   0.000000000   0.001913743
+   0.000000000   5.473489594   0.000000000
+  -0.011287971   0.000000000   4.872629176
+
+HUBBARD {ortho-atomic}
+U Fe1-3d  7.08

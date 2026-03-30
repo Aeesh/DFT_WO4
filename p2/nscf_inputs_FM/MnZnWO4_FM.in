@@ -1,0 +1,63 @@
+&CONTROL
+calculation = 'nscf'
+prefix = 'MnZnWO4_FM'
+verbosity = 'high'
+disk_io = 'nowf'
+restart_mode = 'from_scratch'
+outdir = './tmp/MnZnWO4_FM/'
+pseudo_dir = 'pseudo_dojo_pbesol/'
+etot_conv_thr = 1e-6
+forc_conv_thr = 1e-5
+/
+
+&SYSTEM
+ibrav = 0
+nat = 12
+ntyp = 4
+ecutwfc = 120
+ecutrho = 480
+occupations = 'fixed'
+nspin = 2
+starting_magnetization(1) = 0.20   ! Mn - spin up
+starting_magnetization(2) = 0.00   ! Zn - non-magnetic (d10)
+starting_magnetization(3) = 0.00   ! W
+starting_magnetization(4) = 0.00   ! O
+nbnd = 80
+/
+
+&ELECTRONS
+conv_thr = 1.0e-9
+diagonalization = 'david'
+diago_full_acc = .true.
+/
+
+ATOMIC_SPECIES
+Mn  54.938045  Mn.upf
+Zn  65.390     Zn.upf
+W   183.84     W.upf
+O   15.9994    O.upf
+
+ATOMIC_POSITIONS crystal
+Mn               0.5000000000        0.6761285832        0.7500000000
+Zn               0.5000000000        0.3163895320        0.2500000000
+W               -0.0000000000        0.1810174816        0.7500000000
+W                0.0000000000        0.8213632810        0.2500000000
+O                0.2551222941        0.3728792478        0.9047267063
+O                0.7448777059        0.3728792478        0.5952732937
+O                0.7456602401        0.6231446286        0.1083445432
+O                0.2543397599        0.6231446286        0.3916554568
+O                0.2086674697        0.8991826234        0.9379837016
+O                0.7913325303        0.8991826234        0.5620162984
+O                0.7810454539        0.1073440612        0.0615629329
+O                0.2189545461        0.1073440612        0.4384370671
+
+K_POINTS automatic
+12 12 12 1 1 1
+
+CELL_PARAMETERS angstrom
+   4.7208365610   0.0000000000   0.0008921790
+   0.0000000000   5.7307794434   0.0000000000
+  -0.0710864825   0.0000000000   4.9505609591
+
+HUBBARD {ortho-atomic}
+U Mn-3d 4.65

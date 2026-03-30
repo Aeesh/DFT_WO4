@@ -1,0 +1,68 @@
+
+&CONTROL
+calculation = 'scf'
+prefix = 'CuWO4'
+verbosity = 'high'
+disk_io = 'nowf'
+restart_mode = 'from_scratch'
+outdir = './tmp/CuWO4'
+pseudo_dir = 'pseudo_dojo_pbesol/'
+etot_conv_thr = 1e-4
+forc_conv_thr = 1e-3
+/
+
+&SYSTEM
+ibrav = 0
+nat = 12
+ntyp = 4
+ecutwfc = 100
+ecutrho = 400
+nspin = 2
+occupations = 'smearing'
+smearing = 'mv'
+degauss = 0.02
+starting_magnetization(1) = 0.20
+starting_magnetization(2) = -0.20
+starting_magnetization(3) = 0.00
+starting_magnetization(4) = 0.00
+/
+
+&ELECTRONS
+electron_maxstep = 150
+mixing_beta = 0.7
+mixing_mode = 'local-TF'
+conv_thr = 1.0e-8
+diagonalization = 'david'
+/
+
+ATOMIC_SPECIES
+Cu1 55.845 Cu.upf
+Cu2 55.845 Cu.upf
+W      183.84 W.upf
+O  15.999 O.upf
+
+ATOMIC_POSITIONS {crystal}
+Cu1               0.5033864847        0.2524120171        0.3403851761
+Cu2               0.4966135153        0.7475879829        0.6596148239
+W                0.9843961939        0.2539938808        0.8291065682
+W                0.0156038061        0.7460061192        0.1708934318
+O                0.7526780357        0.4322617263        0.6511435948
+O                0.2473219643        0.5677382737        0.3488564052
+O                0.7847022684        0.4288773620        0.1200957867
+O                0.2152977316        0.5711226380        0.8799042133
+O                0.2719147432        0.0932396938        0.6186225275
+O                0.7280852568        0.9067603062        0.3813774725
+O                0.2173383793        0.0527173554        0.0850890113
+O                0.7826616207        0.9472826446        0.9149109887
+
+K_POINTS {automatic}
+6 6 6 1 1 1
+
+CELL_PARAMETERS angstrom
+   4.694302375  -0.002078275   0.070801902
+   0.288858240   4.841896053   0.003454202
+   0.778237154   0.253963233   5.856122283
+
+HUBBARD {ortho-atomic}
+U Cu1-3d 10.00
+U Cu2-3d 10.00

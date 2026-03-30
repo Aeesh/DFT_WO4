@@ -1,0 +1,6 @@
+&BANDS
+  prefix = 'MnFeWO4_FM'
+  outdir = './tmp/MnFeWO4_FM/'
+  filband = './tmp/MnFeWO4_FM/MnFeWO4_FM_bands.dat'
+  lsym = .true.
+/
