@@ -22,6 +22,17 @@ ELECTRON_COUNTS = {
     'MnZnWO4': 111,
 }
 
+# Correct Fermi energies read directly from SCF outputs
+FERMI_ENERGIES = {
+    'MnCoWO4_AFM': 12.4323,  # from SCF output
+    'MnCoWO4_FM':  12.4714,      # fill in from your SCF output
+    'MnFeWO4_FM':  12.6410,      # fill in from your SCF output
+    'MnNiWO4_AFM': 11.9136,      # fill in from your SCF output
+    'MnNiWO4_FM':  11.9606,      # fill in from your SCF output
+    'MnZnWO4_AFM': 11.2876,      # fill in from your SCF output
+    'MnZnWO4_FM':  11.2876,      # fill in from your SCF output
+}
+
 def read_band_dat(dat_file):
     """Read band data from .dat file"""
     k_coords = []
@@ -138,17 +149,33 @@ def plot_bands_with_fermi(dat_file, compound_name, output_file=None, title="Band
 
     print(f"  ✅ Found {len(k_coords)} k-points, {len(bands)} bands")
 
-    # Calculate ACTUAL Fermi level
-    fermi, vbm, cbm, gap = calculate_fermi_level(bands, n_elec)
+    # # Calculate ACTUAL Fermi level
+    # fermi, vbm, cbm, gap = calculate_fermi_level(bands, n_elec)
 
-    if fermi:
-        print(f"  📍 VBM: {vbm:.3f} eV")
-        print(f"  📍 CBM: {cbm:.3f} eV")
-        print(f"  📍 Fermi: {fermi:.3f} eV")
-        print(f"  📍 Gap: {gap:.3f} eV")
+    # # TODO: hardcode fermi values here from scg output
+    # if fermi:
+    #     print(f"  📍 VBM: {vbm:.3f} eV")
+    #     print(f"  📍 CBM: {cbm:.3f} eV")
+    #     print(f"  📍 Fermi: {fermi:.3f} eV")
+    #     print(f"  📍 Gap: {gap:.3f} eV")
+    # else:
+    #     print(f"  ⚠️  Could not calculate Fermi level")
+    #     fermi = 10  # Fallback
+
+    # Use Fermi energy directly from SCF output
+    fermi = FERMI_ENERGIES.get(compound_name)
+    if fermi is None:
+        print(f"  ⚠️  No SCF Fermi energy for {compound_name}, falling back to electron count method")
+        fermi, vbm, cbm, gap = calculate_fermi_level(bands, n_elec)
     else:
-        print(f"  ⚠️  Could not calculate Fermi level")
-        fermi = 10  # Fallback
+        print(f"  📍 Fermi (from SCF): {fermi:.4f} eV")
+        # Calculate VBM/CBM relative to this correct Fermi energy
+        # n_occ = int(n_elec / 2)
+        # vbm = max(bands[n_occ - 1]) if (n_occ - 1) in bands else None
+        # cbm = min(bands[n_occ])     if n_occ       in bands else None
+        # gap = (cbm - vbm) if (vbm and cbm) else None
+        fermi, vbm, cbm, gap = calculate_fermi_level(bands, n_elec)
+
 
     hs_pos = find_high_symmetry_points(k_coords, k_dist)
 
@@ -157,14 +184,15 @@ def plot_bands_with_fermi(dat_file, compound_name, output_file=None, title="Band
 
     # Plot all bands shifted so Fermi = 0
     for band in bands.values():
-        ax.plot(k_dist, [e - fermi for e in band], 'b-', linewidth=0.8, alpha=0.7)
+        ax.plot(k_dist, [e for e in band], 'b-', linewidth=0.8, alpha=0.7)
+        # ax.plot(k_dist, [e - fermi for e in band], 'b-', linewidth=0.8, alpha=0.7)
 
     # High-symmetry lines
     for pos in hs_pos:
         ax.axvline(pos, color='gray', linestyle=':', linewidth=1, alpha=0.5)
 
     # Fermi level now at 0
-    ax.axhline(0, color='red', linestyle='--', linewidth=1.5,
+    ax.axhline(fermi, color='red', linestyle='--', linewidth=1.5,
               label=f'Fermi = {fermi:.2f} eV', alpha=0.7, zorder=10)
 
     # VBM and CBM also shifted
@@ -181,7 +209,7 @@ def plot_bands_with_fermi(dat_file, compound_name, output_file=None, title="Band
     ax.set_ylabel('E - E$_F$ (eV)', fontsize=13, fontweight='bold')
     ax.set_title(title, fontsize=14, fontweight='bold')
     ax.set_xlim(k_dist[0], k_dist[-1])
-    ax.set_ylim(-6, 6)
+    ax.set_ylim(8, 15)
 
     ax.legend(fontsize=9, loc='upper right')
     ax.grid(True, alpha=0.3, axis='y')
